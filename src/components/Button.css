@@ -37,65 +37,65 @@
 }
 
 .button--fill{
-    background-color: #17171B;
-    color: #FFFFFF;
+    background-color: var(--color-black);
+    color: var(--color-white);
 }
 
 .button--fill:hover{
-    background-color: #2D2D33;
+    background-color: var(--color-black-hover);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0784);
 }
 
 .button--fill:active{
-    background-color: #050506;
+    background-color: var(--color-black-active);
     box-shadow: none;
 }
 
 .button--fill:disabled{
-    background-color: #17171B;
+    background-color: var(--color-black);
     opacity: 0.4;
     box-shadow: none;
 }
 
 .button--outline{
-    background-color: #FFFFFF;
-    border: 1px solid #17171B;
-    color: #17171B;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    color: var(--color-black);
 }
 
 .button--outline:hover{
-    background-color: #F4F4F5;
+    background-color: var(--color-gray-hover);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0784);
 }
 
 .button--outline:active{
-    background-color: #E7E7EA;
+    background-color: var(--color-gray-active);
     box-shadow: none;
 }
 
 .button--outline:disabled{
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
     opacity: 0.4;
     box-shadow: none;
 }
 
 .button--text{
-    background-color: #FFFFFF;
-    color: #17171B;
+    background-color: var(--color-white);
+    color: var(--color-black);
 }
 
 .button--text:hover{
-    background-color: #F4F4F5;
+    background-color: var(--color-gray-hover);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0784);
 }
 
 .button--text:active{
-    background-color: #E7E7EA;
+    background-color: var(--color-gray-active);
     box-shadow: none;
 }
 
 .button--text:disabled{
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
     opacity: 0.4;
     box-shadow: none;
 }
