@@ -1,0 +1,42 @@
+.page {
+  padding: 24px;
+  background: #FFFFFF;
+}
+
+.button-table {
+  display: grid;
+  grid-template-columns:
+        120px
+        70px
+        repeat(2, 190px);
+
+  width: fit-content;
+
+  border-top: 1px solid #dedede;
+  border-left: 1px solid #dedede;
+}
+
+.table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+
+  border-right: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+}
+
+.table-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6d6d6d;
+}
+
+.row-name {
+  font-weight: 600;
+}
+
+.size-name {
+  color: #707070;
+}
