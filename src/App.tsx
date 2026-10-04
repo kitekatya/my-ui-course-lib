@@ -20,6 +20,8 @@ function App() {
                 <div className="table-cell table-header">variant</div>
                 <div className="table-cell table-header">size</div>
                 <div className="table-cell table-header">default</div>
+                <div className="table-cell table-header">:hover</div>
+                <div className="table-cell table-header">:active</div>
                 <div className="table-cell table-header">disabled</div>
 
                 {variants.map((variant) =>
@@ -37,6 +39,26 @@ function App() {
                                 <Button
                                     variant={variant}
                                     size={size}
+                                >
+                                    Кнопка
+                                </Button>
+                            </div>
+
+                            <div className="table-cell button-cell">
+                                <Button
+                                    variant={variant}
+                                    size={size}
+                                    className={'demo-hover'}
+                                >
+                                    Кнопка
+                                </Button>
+                            </div>
+
+                            <div className="table-cell button-cell">
+                                <Button
+                                    variant={variant}
+                                    size={size}
+                                    className={'demo-active'}
                                 >
                                     Кнопка
                                 </Button>

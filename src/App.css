@@ -1,6 +1,6 @@
 .page {
   padding: 24px;
-  background: #FFFFFF;
+  background: var(--color-white);
 }
 
 .button-table {
@@ -8,12 +8,12 @@
   grid-template-columns:
         120px
         70px
-        repeat(2, 190px);
+        repeat(4, 190px);
 
   width: fit-content;
 
-  border-top: 1px solid #dedede;
-  border-left: 1px solid #dedede;
+  border-top: 1px solid var(--color-light-gray);
+  border-left: 1px solid var(--color-light-gray);
 }
 
 .table-cell {
@@ -23,14 +23,13 @@
 
   padding: 12px;
 
-  border-right: 1px solid #dedede;
-  border-bottom: 1px solid #dedede;
+  border-right: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--color-light-gray);
 }
 
 .table-header {
   font-size: 14px;
   font-weight: 600;
-  color: #6d6d6d;
 }
 
 .row-name {
@@ -38,5 +37,19 @@
 }
 
 .size-name {
-  color: #707070;
+  color: var(--color-gray);
+}
+
+.demo-hover,
+.demo-hover:hover,
+.demo-hover:active {
+  background-color: var(--button-hover-background);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0784);
+}
+
+.demo-active,
+.demo-active:hover,
+.demo-active:active {
+  background-color: var(--button-active-background);
+  box-shadow: none;
 }
