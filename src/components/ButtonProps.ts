@@ -1,12 +1,24 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 
-export type ButtonVariant = 'fill' | 'outline' | 'text';
+export type variant = 'fill' | 'outline' | 'text';
 
-export type ButtonSize = 'S' | 'M' | 'L';
+export type size = 'S' | 'M' | 'L';
 
-export interface ButtonProps
-    extends ButtonHTMLAttributes<HTMLButtonElement> {
+type BaseProps = {
     children: ReactNode;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-}
+    variant?: variant;
+    size?: size;
+    className?: string;
+};
+
+type ButtonElementProps = BaseProps &
+    ComponentPropsWithRef<'button'> & {
+    as?: 'button';
+};
+
+type AnchorElementProps = BaseProps &
+    ComponentPropsWithRef<'a'> & {
+    as: 'a';
+};
+
+export type ButtonProps = ButtonElementProps | AnchorElementProps;

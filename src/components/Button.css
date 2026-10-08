@@ -1,8 +1,15 @@
 .button {
+    box-sizing: border-box;
+
     border: none;
     border-radius: 10px;
 
     cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 
     font-family: 'Inter', sans-serif;
     font-weight: 600;
