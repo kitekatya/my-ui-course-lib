@@ -16,6 +16,27 @@
   border-left: 1px solid var(--color-light-gray);
 }
 
+.links-table {
+  display: grid;
+  grid-template-columns: 120px
+        70px
+        repeat(2, 190px);
+  margin-top: 16px;
+}
+
+.links-table .button-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ref-demo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
 .table-cell {
   display: flex;
   align-items: center;

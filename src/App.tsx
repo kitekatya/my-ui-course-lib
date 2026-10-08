@@ -1,17 +1,19 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 
 import { Button } from './components/Button';
 import type {
-    ButtonSize,
-    ButtonVariant,
+    size,
+    variant,
 } from './components/ButtonProps';
 
 import './App.css';
 
-const variants: ButtonVariant[] = ['fill', 'outline', 'text'];
-const sizes: ButtonSize[] = ['S', 'M', 'L'];
+const variants: variant[] = ['fill', 'outline', 'text'];
+const sizes: size[] = ['S', 'M', 'L'];
 
 function App() {
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
         <main className="page">
             <h1>Размеры и состояния кнопки</h1>
@@ -76,6 +78,62 @@ function App() {
                         </Fragment>
                     )),
                 )}
+            </div>
+            <div className="links-table">
+                <div className="table-cell table-header">variant</div>
+                <div className="table-cell table-header">size</div>
+                <div className="table-cell table-header">default</div>
+                <div className="table-cell table-header">disabled</div>
+
+                {variants.map((variant) =>
+                    sizes.map((size) => (
+                        <Fragment key={`link-${variant}-${size}`}>
+                            <div className="table-cell row-name">
+                                {variant}
+                            </div>
+
+                            <div className="table-cell size-name">
+                                {size}
+                            </div>
+
+                            <div className="table-cell button-cell">
+                                <Button
+                                    as="a"
+                                    href="https://example.com"
+                                    variant={variant}
+                                    size={size}
+                                >
+                                    Ссылка
+                                </Button>
+                            </div>
+
+                            <div className="table-cell button-cell">
+                                <Button
+                                    as="a"
+                                    variant={variant}
+                                    size={size}
+                                    aria-disabled="true"
+                                    tabIndex={-1}
+                                    onClick={(event) => event.preventDefault()}
+                                >
+                                    Ссылка
+                                </Button>
+                            </div>
+                        </Fragment>
+                    )),
+                )}
+            </div>
+            <div className="ref-demo">
+                <input
+                    ref={inputRef}
+                    placeholder="Введите текст"
+                />
+
+                <Button
+                    onClick={() => inputRef.current?.focus()}
+                >
+                    Установить фокус
+                </Button>
             </div>
         </main>
     );

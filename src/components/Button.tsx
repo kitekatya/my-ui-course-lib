@@ -1,13 +1,16 @@
 import type { ButtonProps } from './ButtonProps.ts';
 import './Button.css';
+import type {ElementType} from "react";
 
 export function Button({
                            children,
                            variant = 'fill',
                            size = 'M',
+                           as = 'button',
                            className = '',
                            ...props
                        }: ButtonProps) {
+    const Tag = as as ElementType;
 
     const classes = [
         'button',
@@ -20,11 +23,8 @@ export function Button({
     }
 
     return (
-        <button
-            className={classes.join(' ')}
-            {...props}
-        >
+        <Tag className={classes.join(' ')} {...props}>
             {children}
-        </button>
+        </Tag>
     );
 }
