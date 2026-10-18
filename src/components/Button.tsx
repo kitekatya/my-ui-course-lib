@@ -1,5 +1,5 @@
 import type { ButtonProps } from './ButtonProps.ts';
-import './Button.css';
+import * as styles from './Button.css';
 import type {ElementType} from "react";
 
 export function Button({
@@ -13,9 +13,9 @@ export function Button({
     const Tag = as as ElementType;
 
     const classes = [
-        'button',
-        `button--${variant}`,
-        `button--${size.toLowerCase()}`,
+        styles.button,
+        styles.variants[variant],
+        styles.sizes[size],
     ];
 
     if (className) {

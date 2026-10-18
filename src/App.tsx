@@ -7,6 +7,8 @@ import type {
 } from './components/ButtonProps';
 
 import './App.css';
+import {ThemeContext} from "./theme/ThemeContext.tsx";
+import {themeTokens} from "./theme/Theme.css.ts";
 
 const variants: variant[] = ['fill', 'outline', 'text'];
 const sizes: size[] = ['S', 'M', 'L'];
@@ -47,23 +49,50 @@ function App() {
                             </div>
 
                             <div className="table-cell button-cell">
-                                <Button
-                                    variant={variant}
-                                    size={size}
-                                    className={'demo-hover'}
+                                <ThemeContext
+                                    tokens={{
+                                        button: {
+                                            variants: {
+                                                [variant]: {
+                                                    activeBackground: themeTokens.button.variants[variant].hoverBackground,
+                                                    background: themeTokens.button.variants[variant].hoverBackground,
+                                                }
+                                        },
+                                        shadows: {
+                                                default: themeTokens.button.shadows.hover,
+                                        },
+                                    }}}
                                 >
-                                    Кнопка
-                                </Button>
+                                    <Button
+                                        variant={variant}
+                                        size={size}>
+                                        Кнопка
+                                    </Button>
+                                </ThemeContext>
                             </div>
 
                             <div className="table-cell button-cell">
-                                <Button
-                                    variant={variant}
-                                    size={size}
-                                    className={'demo-active'}
+                                <ThemeContext
+                                    tokens={{
+                                        button: {
+                                            variants: {
+                                                [variant]: {
+                                                    hoverBackground: themeTokens.button.variants[variant].activeBackground,
+                                                    background: themeTokens.button.variants[variant].activeBackground,
+                                                }
+                                            },
+                                            shadows: {
+                                                default: themeTokens.button.shadows.active,
+                                                hover: themeTokens.button.shadows.active,
+                                            },
+                                        }}}
                                 >
-                                    Кнопка
-                                </Button>
+                                    <Button
+                                        variant={variant}
+                                        size={size}>
+                                        Кнопка
+                                    </Button>
+                                </ThemeContext>
                             </div>
 
                             <div className="table-cell button-cell">
@@ -134,6 +163,45 @@ function App() {
                 >
                     Установить фокус
                 </Button>
+            </div>
+
+            <h2>Кастомизация темы</h2>
+
+            <div className="theme-demo">
+                <div className="theme-demo-item">
+                    <span>По умолчанию</span>
+                    <Button size="S" variant="outline">
+                        Кнопка
+                    </Button>
+                </div>
+
+                <div className="theme-demo-item">
+                    <span>С переопределёнными токенами</span>
+                    <ThemeContext
+                        tokens={{
+                            button: {
+                                borderRadius: '20px',
+                                sizes: {
+                                    S: {
+                                        paddingX: '25px',
+                                    },
+                                },
+                                variants: {
+                                    outline: {
+                                        background: '#6750B4',
+                                        color: '#FFFFFF',
+                                        hoverBackground: '#6750A8',
+                                        activeBackground: '#6750C8',
+                                    },
+                                },
+                            },
+                        }}
+                    >
+                        <Button size="S" variant="outline">
+                            Подтюненная кнопка
+                        </Button>
+                    </ThemeContext>
+                </div>
             </div>
         </main>
     );
