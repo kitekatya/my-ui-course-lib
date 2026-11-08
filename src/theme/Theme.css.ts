@@ -1,6 +1,23 @@
 import { createTheme } from '@vanilla-extract/css';
 
 export const themeTokens  = {
+    calendar: {
+        background: '#FFFFFF',
+        foreground: '#18181B',
+        muted: '#8E8E93',
+        weekend: '#A1A1AA',
+        border: '#E4E4E7',
+        hover: '#F4F4F5',
+        active: '#E4E4E7',
+        selected: '#18181B',
+        selectedForeground: '#FFFFFF',
+        disabled: '#D1D1D6',
+        todayDot: '#18181B',
+        focus: '#18181B',
+        radius: '12px',
+        padding: '16px',
+        cellSize: '36px',
+    },
     button: {
         borderRadius: '10px',
 
@@ -69,3 +86,23 @@ export const themeTokens  = {
 }
 
 export const [themeClass, vars] = createTheme(themeTokens);
+
+export const darkThemeClass = createTheme(vars, {
+    ...themeTokens,
+    calendar: {
+        ...themeTokens.calendar,
+        background: '#18181B',
+        foreground: '#F8F8FA',
+        border: '#39393F',
+        muted: '#A4A4AD',
+        weekend: '#A1A1AA',
+        hover: '#303037',
+        active: '#41414A',
+        disabled: '#686873',
+        focus: '#B6A4FF',
+        selected: '#F8F8FA',
+        selectedForeground: '#18181B',
+        todayDot: '#B6A4FF',
+    },
+
+});
