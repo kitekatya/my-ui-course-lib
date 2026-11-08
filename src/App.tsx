@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import {Fragment, useRef, useState} from 'react';
 
 import { Button } from './components/Button';
 import type {
@@ -8,12 +8,18 @@ import type {
 
 import './App.css';
 import {ThemeContext} from "./theme/ThemeContext.tsx";
+import type {Theme} from "./theme/ThemeMode.ts";
 import {themeTokens} from "./theme/Theme.css.ts";
+import {Calendar} from "./components/Calendar.tsx";
+import {LocaleContext, type Locale, ruRU, enUS, arEG} from "./utils/locale.ts";
 
 const variants: variant[] = ['fill', 'outline', 'text'];
 const sizes: size[] = ['S', 'M', 'L'];
 
 function App() {
+    const [date, setDate] = useState<Date | null>(new Date());
+    const [locale, setLocale] = useState<Locale>(ruRU);
+    const [theme, setTheme] = useState<Theme>('light');
     const inputRef = useRef<HTMLInputElement>(null);
 
     return (
@@ -202,6 +208,24 @@ function App() {
                         </Button>
                     </ThemeContext>
                 </div>
+            </div>
+
+            <div className="demo">
+                <h1>Calendar</h1>
+                <div className="controls">
+                    <label>Язык <select value={locale.locale} onChange={(event) => setLocale([ruRU, enUS, arEG].find((item) => item.locale === event.target.value) ?? ruRU)}>
+                        <option value="ru-RU">Русский</option><option value="en-US">English</option><option value="ar-EG">العربية</option>
+                    </select></label>
+
+                    <label>Тема <select value={theme} onChange={(event) => setTheme(event.target.value as Theme)}>
+                        <option value="light">Light</option><option value="dark">Dark</option>
+                    </select></label>
+                </div>
+                <ThemeContext theme={theme}>
+                    <LocaleContext.Provider value={locale}>
+                        <Calendar value={date} onValueChange={setDate}/>
+                    </LocaleContext.Provider>
+                </ThemeContext>
             </div>
         </main>
     );
