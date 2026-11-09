@@ -52,7 +52,7 @@ export function Calendar({ value, onValueChange, month, onMonthChange, minDate, 
     const monthTitle = new Intl.DateTimeFormat(locale.locale, { month: 'long', year: 'numeric' }).format(visibleMonth)
         .replace(/\s*г\.$/u, '');
     const heading = locale.locale === 'ru-RU' ? monthTitle[0].toLocaleUpperCase(locale.locale) + monthTitle.slice(1) : monthTitle;
-    const dateFormatter = new Intl.DateTimeFormat(locale.locale, { day: 'numeric', month: 'long', year: 'numeric' });
+    const dateFormatter = new Intl.DateTimeFormat(locale.locale, { day: 'numeric', month: locale.locale === 'en-US' ? 'short' : 'long', year: 'numeric' });
     const numberFormatter = new Intl.NumberFormat(locale.locale, { useGrouping: false });
     const canPrev = !minDate || addMonths(visibleMonth, -1).getTime() >= monthOnly(minDate).getTime();
     const canNext = !maxDate || addMonths(visibleMonth, 1).getTime() <= monthOnly(maxDate).getTime();
